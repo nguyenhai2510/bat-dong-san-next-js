@@ -4,14 +4,15 @@ type ResponseData = {
     message: string
 }
 
-export default function handler(
+export async function GET(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    if (req.method === 'POST') {
-        res.status(200).json({ message: 'Hello from Next.js!' })
+    if (req.method === 'GET') {
+        return Response.json({ message:"xin chao"},{status:200})
     } else {
-        res.status(200).json({ message: 'Hello from Next.js!' })
+        return Response.json({ message:req.headers.authorization},{status:200})
     }
-    res.status(200).json({ message: 'Hello from Next.js!' })
+    // return Response.json({ message: 'Hello World' })
+    // res.status(200).json({ message: 'Hello from Next.js!' })
 }
